@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Secure Chat</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body{font-family:system-ui;background:var(--bg);color:var(--text);margin:0}
+:root{--bg:#f5f5f5;--card:#fff;--text:#000;--me:#dcf8c6;--other:#eee}
+body.dark{--bg:#0f172a;--card:#1e293b;--text:#e5e7eb;--me:#2563eb;--other:#334155}
+.container{max-width:420px;margin:auto;padding:12px}
+input,button{width:100%;padding:12px;margin-top:8px;border-radius:8px;border:none;background:var(--card);color:var(--text)}
+button{background:#000;color:#fff}
+body.dark button{background:#2563eb}
+.messages{background:var(--card);border-radius:8px;padding:10px;height:320px;overflow-y:auto;margin-bottom:5px}
+.msg{max-width:75%;padding:8px 12px;border-radius:14px;margin-bottom:6px;font-size:14px}
+.me{background:var(--me);margin-left:auto}
+.other{background:var(--other);margin-right:auto}
+.ticks{font-size:11px;opacity:.6;text-align:right}
+.top{display:flex;justify-content:space-between;align-items:center}
+.typing{font-size:12px;opacity:.6;margin-bottom:5px}
+button:disabled{opacity:.5}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="top">
+    <h3>🔐 Secure Chat</h3>
+    <span onclick="toggleDark()" style="cursor:pointer">🌙</span>
+  </div>
+  <input id="room" placeholder="Room ID">
+  <input id="password" type="password" placeholder="Secret Password">
+  <button onclick="join()">Join Room</button>
+  <div id="chat" style="display:none">
+    <div class="messages" id="messages"></div>
+    <div class="typing" id="typing"></div>
+    <input id="msg" placeholder="Type message">
+    <button id="sendBtn" onclick="sendMsg()" disabled>Send</button>
+  </div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
