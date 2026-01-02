@@ -66,12 +66,18 @@ async function sendMsg() {
   msg.value = "";
 }
 
-function showMessage(text) {
-  const li = document.createElement("li");
-  li.textContent = text;
-  messages.appendChild(li);
-  setTimeout(() => li.remove(), 30 * 60 * 1000);
+function showMessage(text, mine = false) {
+  const div = document.createElement("div");
+  div.className = "msg " + (mine ? "me" : "other");
+  div.textContent = text;
+
+  messages.appendChild(div);
+  messages.scrollTop = messages.scrollHeight;
+
+  // 30-minute self-destruct
+  setTimeout(() => div.remove(), 30 * 60 * 1000);
 }
+
 
 document.addEventListener("visibilitychange", () => {
   if (document.hidden) location.reload();
