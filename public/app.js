@@ -62,7 +62,7 @@ async function join() {
 async function sendMsg() {
   const payload = await encrypt(msg.value);
   socket.send(JSON.stringify({ type: "message", payload }));
-  showMessage("You: " + msg.value);
+  showMessage(msg.value, true);
   msg.value = "";
 }
 
