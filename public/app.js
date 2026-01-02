@@ -55,7 +55,7 @@ async function join() {
   socket.onmessage = async (e) => {
     const msg = JSON.parse(e.data);
     const text = await decrypt(msg.payload);
-    showMessage(text);
+    showMessage(text,false);
   };
 }
 
